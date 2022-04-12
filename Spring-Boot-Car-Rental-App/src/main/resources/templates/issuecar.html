@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-light" style="background-color: Aquamarine;height: 83px; align-items: center; border-radius: 30px;size: 20px;padding: 16px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" th:href="@{/home}">Hertz Car Rental</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/cars/new}">Add Car</a></li>
+        <li><a th:href="@{/cars}">View Car</a></li>
+        <li><a th:href="@{/getissuedcars/new}">Rent Car</a></li>
+        <li><a th:href="@{/getissuedcars}">View Rented Car</a></li>
+        <li><a th:href="@{/searchcar}">Search Car</a></li>
+        <li><a th:href="@{/invalidate/session2}">Logout</a></li>
+        <li><div class="side-box" style="position: absolute;left:130px;top:10px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div style="margin-top: 40px">
+     <h3 style="margin-left: 50px">Rent Car Form</h3>
+  <form th:action="@{/getissuedcars}" th:object = "${car}" method="post" style="width:300px;margin-left: 50px">
+  <p th:if="${error3}" class="error" style="color: red; size: 50px">Sorry car is unavilabe at this moment!</p>
+  <div class="form-group">
+    <label for="callno1">Car Callno</label>
+    <input type="text" class="form-control" name="callno" th:field = "*{callno}" placeholder="Callno"/>
+  </div>
+  <div class="form-group">
+    <label for="id1">Customer Id</label>
+    <input type="text" class="form-control" name="customerid" th:field = "*{customerid}" placeholder="Customer Id"/>
+  </div>
+  <div class="form-group">
+    <label for="name1">Customer Name</label>
+    <input type="text" class="form-control" name="customername" th:field = "*{customername}" placeholder="Customer Name"/>
+  </div>
+  <div class="form-group">
+    <label for="mobile1">Customer Mobile</label>
+    <input type="number" class="form-control" name="customermobile" th:field = "*{customermobile}" placeholder="Customer Mobile"/>
+  </div>
+  <button type="submit" class="btn btn-primary">Rent Car</button>
+</form>
+</div>
+
+<div th:replace="footer.html">
+</div>
+
+
+</html>

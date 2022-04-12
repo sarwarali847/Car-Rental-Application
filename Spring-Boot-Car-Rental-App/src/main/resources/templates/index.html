@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Hertz Car Rental Portal</title>
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/70a642cd7c.js"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+
+</head>
+
+<body style="background-image: url('images/a1.jpg');">
+<nav   class="navbar navbar-light" style="background-color: Aquamarine;padding: 10px; border-radius: 30px;;height: 83px;padding: 15px;">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" th:href="@{/home}">   Hertz Car Rental</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div  collapse navbar-collapse id="bs-example-navbar-collapse-1" style="position: absolute;left: 230px">
+      <ul class="nav navbar-nav">
+    
+        <li><a th:href="@{/home}" class="active">Home</a></li>
+        <li><a th:href="@{/admincrausal}" class="active">Admin</a></li>
+        <li><a th:href="@{/customercrausal}" class="active">Customer</a></li>
+        <li><div class="side-box" style="position: absolute;left:500px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="container-fluid" style="background-image: url('a1.jpg');">
+<marquee direction="right" behavior="alternate" style="background: linear-gradient(135deg, orange 60%, cyan);;border:White 3px SOLID;padding: 10px;border-radius: 30px" >  
+<h1 style="color:blue">Hertz Car Rental</h1>
+
+</marquee>
+<div class="row">
+  
+  <div class="col-md-6">
+  <div style="background-color: aquamarine; border: 3px solid orange; margin-left:7rem; margin-top:30px;border-radius: 40px; width: 400px; height: 370px" class="flex-container">
+  <h3 style="margin-left: 120px; border: 3px solid orange; width: 180px; border-radius: 10px;text-align: center;background-color: DeepSkyBlue; ">Admin Login</h3><br>
+  <form th:action="@{/AdminSection}"  th:object="${AdminLoginForm}" method="post" style="width:300px; margin-left: 55px">
+  <p th:if="${error}" class="error" style="color: red; size: 50px">Email or Password is Incorrect</p>
+  <div class="form-group">
+    <label for="email1">Email address</label>
+    <input type="email" class="form-control" name="email" id="email1"  placeholder="Email"/>
+  </div>
+  <div class="form-group">
+    <label for="password1">Password</label>
+    <input type="password" class="form-control" name="password" id="password1"  placeholder="Password"/>
+  </div>  
+  
+  <button type="submit" class="btn btn-success" style="margin-left: 80px">Login</button>
+  <button type="reset" class="btn btn-danger">Reset</button><br><br>
+  <div class="register" style="margin-left: 100px">
+  <a th:href="@{/admins/new}" class="btn btn-primary" style="color: white;background-color: #008CBA;padding: 9px 10px;text-align: center;border-radius: 4px 4px 4px 4px">Register</a>
+</div>
+</form>
+  </div>
+  </div>
+  <div class="col-md-6">
+  <div style="background-color: aquamarine; border: 3px solid orange; margin-left:80px;margin-top:30px;border-radius: 40px; width: 400px; height: 370px" class="flex-container">
+  <h3 style="margin-left: 120px; border: 3px solid orange; width: 180px; border-radius: 10px;text-align: center;background-color: DeepSkyBlue;">Customer Login</h3><br>
+  <form th:action="@{/CustomerSection}"  th:object="${CustomerLoginForm}"  method="post" style="width:300px; margin-left: 50px">
+  <p th:if="${error2}" class="error" style="color: red; size: 50px">Email or Password is Incorrect</p>
+  <div class="form-group">
+    <label for="email1">Email address</label>
+    <input type="email" class="form-control" id="email1" name="email" placeholder="Email"/>
+  </div>
+  <div class="form-group">
+    <label for="password1">Password</label>
+    <input type="password" class="form-control" id="password1" name="password" placeholder="Password"/>
+  </div>  
+  <button type="submit" class="btn btn-success" style="margin-left: 80px">Login</button>
+  <button type="reset" class="btn btn-danger">Reset</button><br><br>
+   <div class="register" style="margin-left: 110px">
+   <a th:href="@{/customers2/new}" class="btn btn-primary" style="color: white;background-color: #008CBA;padding: 9px 10px;text-align: center;border-radius: 4px 4px 4px 4px">Register</a>
+</div>
+</form>
+</div>
+</div>
+  </div>
+</div>
+
+<footer style="text-align:center;position:absolute;bottom:-180px;padding: 2px;background-color:Aquamarine ;color: black; width: 1230px;border-radius: 40px">
+  <p>Owner: Brian hertz<br>
+  <a href="mailto:Brian@hertz.com">Brian@hertz.com</a></p>
+  <div>
+   <a href="#" class="btn btn-primary">About Us </a>|
+   <a href="#" class="btn btn-primary">Term & Conditions </a>|
+   <a href="#" class="btn btn-primary">Raise Query </a>|
+   <a href="#" class="btn btn-primary">Careers</a>
+  </div>
+  
+  <div class="social" style="margin-left: 900px;position: absolute;top:0px">
+       <p>Follow Us</p>
+       <a href="https://www.facebook.com/flipkart/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+       <a href="https://twitter.com/Flipkart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fab fa-twitter"></i></a>
+       <a href="https://www.instagram.com/flipkart/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+       <a href="https://freekaamaal.com/flipkart/flipkart-youtube-premium-offer" target="_blank"><i class="fab fa-youtube"></i></a>
+                            
+   </div>
+</footer>
+
+
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</body>
+
+</html>

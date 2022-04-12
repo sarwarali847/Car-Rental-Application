@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Hertz Car Rental Portal</title>
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/70a642cd7c.js"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+
+</head>
+
+<body style="background-image: url('images/a1.jpg');">
+<nav   class="navbar navbar-light" style="background-color: Aquamarine;padding: 10px; border-radius: 30px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" th:href="@{/home}">   Hertz Car Rental</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div  collapse navbar-collapse id="bs-example-navbar-collapse-1" style="position: absolute;left: 230px">
+      <ul class="nav navbar-nav">
+    
+        <li><a th:href="@{/home}" class="active">Home</a></li>
+        <li><a th:href="@{/admincrausal}" class="active">Admin</a></li>
+        <li><a th:href="@{/customercrausal}" class="active">Customer</a></li>
+        <li><div class="side-box" style="position: absolute;left:500px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div style="background-color: aquamarine; border: 3px solid orange; margin-left:400px; margin-top:30px;border-radius: 40px; width: 400px; height: 450px" class="flex-container">
+<div style="margin-top: 30px;position: absolute;left:135px; margin-left:240px">
+<h3 style="margin-left: 140px; border: 3px solid orange; width: 180px; border-radius: 10px;text-align: center;background-color: DeepSkyBlue; ">Add Customer</h3>
+  <form th:action="@{/customers2}" th:object="${customer2}" method="post" style="width:300px;margin-left: 80px">
+  <div class="form-group">
+    <label>Name: </label>
+    <input type="text" class="form-control" name="name" th:field="*{name}" placeholder="Name"/>
+  </div>
+  <div class="form-group">
+    <label >Email address: </label>
+    <input type="email" class="form-control" name="email" th:field="*{email}"  placeholder="Email"/>
+  </div>
+  <div class="form-group">
+    <label >Password: </label>
+    <input type="password" class="form-control" name="password"  th:field="*{password}" placeholder="Password"/>
+  </div>  
+  <div class="form-group">
+    <label>Mobile Number: </label>
+    <input type="number" class="form-control" name="mobile"  th:field="*{mobile}" placeholder="Mobile"/>
+  </div>
+  <button type="submit" class="btn btn-success" style="margin-left: 100px">Register</button>
+  
+</form>
+</div>
+
+
+</div>

@@ -1,0 +1,106 @@
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-light" style="background-color: Aquamarine;padding: 10px; border-radius: 30px; size: 20px;height: 83px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" th:href="@{/home}">Hertz Car Rental</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/admins}">View Admin</a></li>
+         <li><a th:href="@{/cars2/new}">Add Car</a></li>
+        <li><a th:href="@{/cars2}">View Car</a></li>
+        <li><a th:href="@{/customers/new}">Add Customer</a></li>
+        <li><a th:href="@{/customers}">View Customer</a></li>
+        <li><a th:href="@{/searchcustomer}">Search Customer</a></li>
+        <li><a th:href="@{/invalidate/session}">Logout</a></li>
+      
+        <li><div class="side-box" style="position: absolute;left:50px;top:5px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<body style=' background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff)'>
+		
+		
+	
+		<!--  <jsp:include page="SearchCar2.jsp"></jsp:include>-->
+		<div class='container'>
+
+		<table class='table table-bordered table-striped' style='background-color:#90EE90'>
+	   <tr>
+	   <th>Callno</th>
+	   <th>Car_Name</th>
+	   <th>Company_Name</th>
+	   <th>Model</th>
+	   <th>Quantity</th>
+	   <th>Rented</th>
+	   <th>Edit</th>
+	   <th>Delete</th></tr>
+	
+		<tr th:each = "car: ${listCars2}">
+		<td th:text = "${car.callno}"></td>
+		<td th:text = "${car.car_name}"></td>
+		<td th:text = "${car.company_name}"></td>
+		<td th:text = "${car.model}"></td>
+		<td th:text = "${car.quantity}"></td>
+		<td th:text = "${car.rented}"></td>
+		<td>
+			<a  th:href = "@{/cars2/edit/{id}(id=${car.id})}"
+			class = "btn btn-warning">Edit</a></td>
+			<td>
+			<a  th:href = "@{/deletecars2/{id}(id=${car.id})}"
+			class = "btn btn-danger">Delete</a>
+		</td>
+		</tr>
+		</table>
+		<div th:if = "${totalPages > 1}">
+			<div class = "row col-sm-10">
+				<div class = "col-sm-2" style="color: white">
+					Total Rows: [[${totalItems}]] 
+				</div>
+				<div class = "col-sm-1" style="color: white">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/page2/' + ${i}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+				</div>
+				<div class = "col-sm-1" style="color: white">
+					<a th:if="${currentPage < totalPages}" th:href="@{'/page2/' + ${currentPage + 1}}">Next</a>
+					<span th:unless="${currentPage < totalPages}">Next</span>
+				</div>
+				
+				 <div class="col-sm-1" style="color: white">
+    				<a th:if="${currentPage < totalPages}" th:href="@{'/page2/' + ${totalPages}}">Last</a>
+					<span th:unless="${currentPage < totalPages}">Last</span>
+   				 </div>
+			</div>
+		</div>
+		</div>
+		</body>
+		
+		<div th:replace="footer.html">
+</div>
+
+
+
+</html>

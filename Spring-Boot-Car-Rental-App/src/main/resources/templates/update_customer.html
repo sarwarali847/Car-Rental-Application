@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-light" style="background-color: Aquamarine;padding: 10px; border-radius: 30px; size: 20px;;height: 83px;padding: 15px;">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" th:href="@{/home}">Hertz Car Rental</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/admins}">View Admin</a></li>
+         <li><a th:href="@{/cars/new}">Add Car</a></li>
+        <li><a th:href="@{/cars}">View Car</a></li>
+        <li><a th:href="@{/customers/new}">Add Customer</a></li>
+        <li><a th:href="@{/customers}">View Customer</a></li>
+        <li><a th:href="@{/searchcustomer}">Search Customer</a></li>
+        <li><a th:href="@{/invalidate/session}">Logout</a></li>
+      
+       
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+ <body>
+		
+		
+		
+		<div class='container'>
+		<h3>Edit Customer Form</h3>
+		<form th:action="@{/customers/{id}(id=${customer.id})}" th:object = "${customer}" method='post' style='width:300px'> 
+		
+		<div class='form-group'> 
+		
+		 <input type='hidden' name='id' th:field="*{id}"  placeholder='ID' readonly/> 
+		 
+		 <label for='name1'>Name</label> 
+		 <input type='text' class='form-control'  name='name'  th:field = "*{name}" placeholder='Name'/> 
+		 </div> 
+		 <div class='form-group'> 
+		 <label for='email1'>Email address</label> 
+		 <input type='email' class='form-control'   name='email' th:field = "*{email}" placeholder='Email'/> 
+		 </div> 
+		 <div class='form-group'> 
+		 <label for='password1'>Password</label> 
+		 <input type="text" class='form-control'   name='password' th:field = "*{password}" placeholder='Password'/> 
+		 </div>   
+		 <div class='form-group'> 
+		 <label for='mobile1'>Mobile Number</label> 
+		 <input type='number' class='form-control'   name='mobile' th:field = "*{mobile}" placeholder='Mobile'/> 
+		 </div> 
+		 <button type='submit' class='btn btn-primary'>Update</button>
+		 </form>
+		
+		 </div>
+		 </body>
+		 <div th:replace="footer.html">
+</div>
+		 
+		 </html>
